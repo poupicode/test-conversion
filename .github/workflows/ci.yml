@@ -28,11 +28,19 @@ jobs:
     - name: Fail if coverage < 80%
       run: |
         THRESHOLD=80
+
+        if [ ! -f coverage/coverage-summary.json ]; then
+          echo "coverage-summary.json not found."
+          echo "Tests may have failed or coverage was not generated."
+          exit 1
+        fi
+
         COVERAGE=$(node -p "require('./coverage/coverage-summary.json').total.statements.pct")
         echo "Statements coverage: $COVERAGE%"
+
         if (( $(echo "$COVERAGE < $THRESHOLD" | bc -l) )); then
           echo "Coverage below $THRESHOLD%. Failing build."
           exit 1
         else
-          echo "Coverage OK."
+          echo "Coverage is sufficient."
         fi
