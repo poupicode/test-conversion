@@ -1,4 +1,3 @@
-// Simule un appel à un service externe pour obtenir le taux de conversion
 function getExchangeRate(from, to) {
   const rates = {
     EUR: { USD: 1.1 },

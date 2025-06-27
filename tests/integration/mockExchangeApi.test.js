@@ -1,11 +1,11 @@
 const { convertCurrency } = require('../../services/conversionService');
 const exchangeApiService = require('../../services/exchangeApiService');
 
-jest.mock('../../services/exchangeApiService'); // on remplace la vraie fonction par un mock
+jest.mock('../../services/exchangeApiService');
 
 describe('Integration: convertCurrency with mocked exchange API', () => {
   test('should use mocked exchange rate', () => {
-    exchangeApiService.getExchangeRate.mockReturnValue(1.5); // on simule un taux fictif
+    exchangeApiService.getExchangeRate.mockReturnValue(1.5);
 
     const result = convertCurrency('EUR', 'USD', 100);
     expect(result).toBe(150);
