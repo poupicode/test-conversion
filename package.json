@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "jest --coverage"
+    "test": "./node_modules/.bin/jest --coverage"
   },
   "keywords": [],
   "author": "",
